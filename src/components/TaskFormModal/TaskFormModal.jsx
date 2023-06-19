@@ -1,10 +1,7 @@
-import './App.css';
-import Header from "./components/Header/Header";
-import React, {useState} from "react";
-import Modal from "./components/Modal/Modal";
+import React, {useState} from 'react';
+import Modal from "../Modal/Modal";
 
-function App() {
-
+const TaskFormModal = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [user, setUser] = useState('');
@@ -19,21 +16,13 @@ function App() {
         setUser("");
     }
 
-    return (
-        <div className="app">
-            <header className="header">
-                <div className="header-title">TRELLO</div>
-                <button className="create-task-button" onClick={() => setModalActive(true)}>
-                    Create New Task
-                </button>
-            </header>
-            <Modal active={modalActive} setActive={setModalActive}>
-                <form className="form" onSubmit={handleSubmit}>
-                    <div className="form-title">
-                        <h1 className="title">Create task:</h1>
-                        <button className="close-button">&#10006;</button>
-                    </div>
 
+    return (
+        <div className="modal-overlay">
+            <div className="modal">
+                <form onSubmit={handleSubmit}>
+                    <button className="close-button">&#10006;</button>
+                    <h1 className="form-title">Create task:</h1>
                     <input
                         type="text"
                         placeholder="Title"
@@ -52,11 +41,12 @@ function App() {
                         value={user}
                         onChange={(e) => setUser(e.target.value)}
                     />
-                    <button className="button-create">Create</button>
+                    <button type="submit">Create</button>
                 </form>
-            </Modal>
+
+            </div>
         </div>
     );
-}
+};
 
-export default App;
+export default TaskFormModal;

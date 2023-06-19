@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
+body {
+    height: 3000px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+    background: rgba(43, 54, 135, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 32px 28px 32px;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-title {
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.create-task-button {
+    background: rgba(234, 232, 232, 1);
+    border: none;
+    padding: 8px 32px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.App-link {
-  color: #61dafb;
+.close-button {
+    background: none;
+    border: none;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form input {
+    border: none;
+    border-bottom: 1px solid rgba(128, 128, 128, 1);
+    padding: 5px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.form input::placeholder {
+    color: rgba(128, 128, 128, 1);
+}
+
+.button-create{
+    background-color: rgba(98, 149, 241, 1);
+    color: white;
+    border: none;
+    padding: 7px 61px 7px 61px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    width: fit-content;
+}
+
+.title {
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    color: black;
+}
+
+.form-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
 }
