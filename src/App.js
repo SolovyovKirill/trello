@@ -1,60 +1,69 @@
+// App.js
 import './App.css';
-import Header from "./components/Header/Header";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Modal from "./components/Modal/Modal";
+import Header from "./components/Header/Header";
+import ProgressRow from "./components/ProgressRow/ProgressRow";
+import TaskForm from "./components/TaskForm/TaskForm";
 
 function App() {
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [user, setUser] = useState("");
+    const [modalActive, setModalActive] = useState(false);
+    const [taskList, setTaskList] = useState([]);
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [user, setUser] = useState('');
-
-    const [modalActive, setModalActive] = useState(true)
+    const isFormValid = title.trim() !== "" && description.trim() !== "" && user.trim() !== "";
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if (title.trim() === "" || description.trim() === "" || user.trim() === "") {
+            setModalActive(false);
+            return;
+        }
+
+        const newTask = {
+            title: title,
+            description: description,
+            user: user
+        };
+
+        setTaskList((prevTaskList) => [...prevTaskList, newTask]);
+
         setTitle("");
         setDescription("");
         setUser("");
-    }
+        setModalActive(false);
+    };
+
+    const handleCreateTask = () => {
+        setTitle("");
+        setDescription("");
+        setUser("");
+        setModalActive(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalActive(false);
+    };
 
     return (
         <div className="app">
-            <header className="header">
-                <div className="header-title">TRELLO</div>
-                <button className="create-task-button" onClick={() => setModalActive(true)}>
-                    Create New Task
-                </button>
-            </header>
-            <Modal active={modalActive} setActive={setModalActive}>
-                <form className="form" onSubmit={handleSubmit}>
-                    <div className="form-title">
-                        <h1 className="title">Create task:</h1>
-                        <button className="close-button">&#10006;</button>
-                    </div>
-
-                    <input
-                        type="text"
-                        placeholder="Title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    />
-                    <input
-                        type="text"
-                        placeholder="User"
-                        value={user}
-                        onChange={(e) => setUser(e.target.value)}
-                    />
-                    <button className="button-create">Create</button>
-                </form>
+            <Header handleCreateTask={handleCreateTask} />
+            <Modal active={modalActive} setActive={setModalActive} handleCloseModal={handleCloseModal} title="Create task:">
+                <TaskForm
+                    title={title}
+                    description={description}
+                    user={user}
+                    onTitleChange={(e) => setTitle(e.target.value)}
+                    onDescriptionChange={(e) => setDescription(e.target.value)}
+                    onUserChange={(e) => setUser(e.target.value)}
+                    onSubmit={handleSubmit}
+                    isFormValid={isFormValid}
+                />
             </Modal>
+            <ProgressRow taskList={taskList} />
         </div>
     );
 }

@@ -1,0 +1,21 @@
+.progress-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 140px;
+    gap: 83px;
+    align-items: start;
+    position: absolute;
+}
+
+
+.progress-row > .box {
+    width: 250px;
+}
+
+@media screen and (max-width: 600px) {
+    .progress-row .box {
+        flex-direction: column;
+    }
+}
+
+

@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
-import Modal from "../Modal/Modal";
+import React from 'react';
+import './Header.css';
 
-const Header = () => {
+const Header = ({ handleCreateTask }) => {
     return (
-        <div className="header">
+        <header className="header">
             <div className="header-title">TRELLO</div>
-            <button className="create-task-button" onClick={() => setModalActive(true)}>
+            <button className="create-task-button" onClick={handleCreateTask}>
                 Create New Task
             </button>
-        </div>
+        </header>
     );
 };
 

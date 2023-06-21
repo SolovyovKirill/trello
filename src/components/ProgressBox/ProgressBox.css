@@ -1,0 +1,13 @@
+.box {
+    width: 250px;
+}
+
+.box-progress {
+    background-color: rgba(43, 54, 135, 1);;
+    color: white;
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 30px 14px;
+    border: none;
+}
