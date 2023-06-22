@@ -1,7 +1,6 @@
 import React from "react";
 import ProgressBox from "../ProgressBox/ProgressBox";
 import './ProgressRow.css';
-import TaskBox from "../TaskBox/TaskBox";
 
 const ProgressRow = ({taskList}) => {
     return (

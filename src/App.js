@@ -1,17 +1,22 @@
-// App.js
 import './App.css';
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Modal from "./components/Modal/Modal";
 import Header from "./components/Header/Header";
 import ProgressRow from "./components/ProgressRow/ProgressRow";
 import TaskForm from "./components/TaskForm/TaskForm";
+import useTaskForm from "./hooks/UseTaskForm";
 
 function App() {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [user, setUser] = useState("");
+
+    const { title, setTitle, description, setDescription, user, setUser , setReset} = useTaskForm();
     const [modalActive, setModalActive] = useState(false);
     const [taskList, setTaskList] = useState([]);
+
+    useEffect(() => {
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        setTaskList(tasks);
+    }, []);
+
 
     const isFormValid = title.trim() !== "" && description.trim() !== "" && user.trim() !== "";
 
@@ -29,18 +34,16 @@ function App() {
             user: user
         };
 
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        localStorage.setItem("tasks", JSON.stringify([...tasks, newTask]));
+
         setTaskList((prevTaskList) => [...prevTaskList, newTask]);
 
-        setTitle("");
-        setDescription("");
-        setUser("");
         setModalActive(false);
     };
 
     const handleCreateTask = () => {
-        setTitle("");
-        setDescription("");
-        setUser("");
+        setReset();
         setModalActive(true);
     };
 
@@ -68,4 +71,4 @@ function App() {
     );
 }
 
-export default App;
+export default App

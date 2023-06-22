@@ -1,3 +1,6 @@
+* {
+    margin: 0;
+}
 .progress-row {
     display: flex;
     flex-wrap: wrap;
@@ -6,7 +9,6 @@
     align-items: start;
     position: absolute;
 }
-
 
 .progress-row > .box {
     width: 250px;
@@ -17,5 +19,3 @@
         flex-direction: column;
     }
 }
-
-
