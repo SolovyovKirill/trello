@@ -7,8 +7,8 @@ import TaskForm from "./components/TaskForm/TaskForm";
 import useTaskForm from "./hooks/UseTaskForm";
 
 function App() {
-
-    const { title, setTitle, description, setDescription, user, setUser , setReset} = useTaskForm();
+    
+    const { title, setTitle, description, setDescription, user, setUser , setReset, nextId, setNextId} = useTaskForm();
     const [modalActive, setModalActive] = useState(false);
     const [taskList, setTaskList] = useState([]);
 
@@ -29,10 +29,13 @@ function App() {
         }
 
         const newTask = {
+            id: nextId,
             title: title,
             description: description,
             user: user
         };
+
+        setNextId(nextId + 1);
 
         const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
         localStorage.setItem("tasks", JSON.stringify([...tasks, newTask]));

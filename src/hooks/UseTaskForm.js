@@ -4,6 +4,7 @@ function useTaskForm() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [user, setUser] = useState("");
+    const [nextId, setNextId] = useState(1);
 
     const setReset = () => {
         setTitle("");
@@ -18,7 +19,9 @@ function useTaskForm() {
         setTitle,
         setDescription,
         setUser,
-        setReset
+        setReset,
+        nextId,
+        setNextId
     };
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import "./TaskBox.css"
 const TaskBox = ({title, description, user}) => {
+
     return (
         <div className="box-container">
             <div className="title">{title}</div>
