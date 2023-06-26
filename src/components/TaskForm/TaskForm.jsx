@@ -1,27 +1,27 @@
 import React from "react";
-import './TaskForm.css';
+import "./TaskForm.css";
+import useTaskForm from "../../hooks/useTaskForm";
 
-const TaskForm = ({ title, description, user, onTitleChange, onDescriptionChange, onUserChange, onSubmit, isFormValid }) => {
+const TaskForm = ({ tasks = [], setTasks, handleCloseModal }) => {
+    const {
+        task,
+        isFormValid,
+        handleFormSubmit,
+        handleOnChangeTitle,
+        handleOnChangeDescription,
+        handleOnChangeUser,
+    } = useTaskForm(tasks, setTasks, handleCloseModal);
+
     return (
-        <form className="form" onSubmit={onSubmit}>
-            <input
-                type="text"
-                placeholder="Title"
-                value={title}
-                onChange={onTitleChange}
-            />
+        <form className="form" onSubmit={handleFormSubmit}>
+            <input type="text" placeholder="Title" value={task.title} onChange={handleOnChangeTitle} />
             <input
                 type="text"
                 placeholder="Description"
-                value={description}
-                onChange={onDescriptionChange}
+                value={task.description}
+                onChange={handleOnChangeDescription}
             />
-            <input
-                type="text"
-                placeholder="User"
-                value={user}
-                onChange={onUserChange}
-            />
+            <input type="text" placeholder="User" value={task.user} onChange={handleOnChangeUser} />
             <button className="button-create" type="submit" disabled={!isFormValid}>
                 Create
             </button>

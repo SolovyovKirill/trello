@@ -1,76 +1,29 @@
 import './App.css';
-import React, {useEffect, useState} from "react";
+import React from "react";
 import Modal from "./components/Modal/Modal";
 import Header from "./components/Header/Header";
 import ProgressRow from "./components/ProgressRow/ProgressRow";
 import TaskForm from "./components/TaskForm/TaskForm";
-import useTaskForm from "./hooks/UseTaskForm";
+import {DndProvider} from "react-dnd";
+import {HTML5Backend} from "react-dnd-html5-backend";
+import useLocalStorage from "./hooks/useLocalStorage";
+import useModal from "./hooks/useModal";
+
 
 function App() {
-    
-    const { title, setTitle, description, setDescription, user, setUser , setReset, nextId, setNextId} = useTaskForm();
-    const [modalActive, setModalActive] = useState(false);
-    const [taskList, setTaskList] = useState([]);
-
-    useEffect(() => {
-        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        setTaskList(tasks);
-    }, []);
-
-
-    const isFormValid = title.trim() !== "" && description.trim() !== "" && user.trim() !== "";
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (title.trim() === "" || description.trim() === "" || user.trim() === "") {
-            setModalActive(false);
-            return;
-        }
-
-        const newTask = {
-            id: nextId,
-            title: title,
-            description: description,
-            user: user
-        };
-
-        setNextId(nextId + 1);
-
-        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        localStorage.setItem("tasks", JSON.stringify([...tasks, newTask]));
-
-        setTaskList((prevTaskList) => [...prevTaskList, newTask]);
-
-        setModalActive(false);
-    };
-
-    const handleCreateTask = () => {
-        setReset();
-        setModalActive(true);
-    };
-
-    const handleCloseModal = () => {
-        setModalActive(false);
-    };
+    const [tasks, setTasks] = useLocalStorage("tasks", []);
+    const [modalActive, toggleModal, closeModal] = useModal(false);
 
     return (
-        <div className="app">
-            <Header handleCreateTask={handleCreateTask} />
-            <Modal active={modalActive} setActive={setModalActive} handleCloseModal={handleCloseModal} title="Create task:">
-                <TaskForm
-                    title={title}
-                    description={description}
-                    user={user}
-                    onTitleChange={(e) => setTitle(e.target.value)}
-                    onDescriptionChange={(e) => setDescription(e.target.value)}
-                    onUserChange={(e) => setUser(e.target.value)}
-                    onSubmit={handleSubmit}
-                    isFormValid={isFormValid}
-                />
-            </Modal>
-            <ProgressRow taskList={taskList} />
-        </div>
+        <DndProvider backend={HTML5Backend}>
+            <div className="app">
+                <Header handleToggleModal={toggleModal}/>
+                <Modal active={modalActive} setActive={toggleModal} handleCloseModal={closeModal} title="Create task:">
+                    <TaskForm tasks={tasks} setTasks={setTasks} handleCloseModal={closeModal} />
+                </Modal>
+                <ProgressRow tasks={tasks} setTasks={setTasks}/>
+            </div>
+        </DndProvider>
     );
 }
 
