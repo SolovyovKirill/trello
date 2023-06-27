@@ -1,5 +1,5 @@
 import React from "react";
-import './ProgressRow.css';
+import "./ProgressRow.css";
 import Board from "../Board/Board";
 import useTaskStatuses from "../../hooks/useTaskStatuses";
 

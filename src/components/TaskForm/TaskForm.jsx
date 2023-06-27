@@ -14,15 +14,29 @@ const TaskForm = ({ tasks = [], setTasks, handleCloseModal }) => {
 
     return (
         <form className="form" onSubmit={handleFormSubmit}>
-            <input type="text" placeholder="Title" value={task.title} onChange={handleOnChangeTitle} />
+            <input
+                type="text"
+                placeholder="Title"
+                value={task.title}
+                onChange={handleOnChangeTitle}
+            />
             <input
                 type="text"
                 placeholder="Description"
                 value={task.description}
                 onChange={handleOnChangeDescription}
             />
-            <input type="text" placeholder="User" value={task.user} onChange={handleOnChangeUser} />
-            <button className="button-create" type="submit" disabled={!isFormValid}>
+            <input
+                type="text"
+                placeholder="User"
+                value={task.user}
+                onChange={handleOnChangeUser}
+            />
+            <button
+                className="button-create"
+                type="submit"
+                disabled={!isFormValid}
+            >
                 Create
             </button>
         </form>

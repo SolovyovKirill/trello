@@ -1,16 +1,15 @@
-import React from 'react';
-import "./Task.css"
-import {useDrag} from "react-dnd";
+import React from "react";
+import "./Task.css";
+import { useDrag } from "react-dnd";
 
-const Task = ({task}) => {
-
-    const [{ isDragging}, drag] = useDrag(() => ({
+const Task = ({ task }) => {
+    const [{ isDragging }, drag] = useDrag(() => ({
         type: "task",
-        item: {id: task.id},
+        item: { id: task.id },
         collect: (monitor) => ({
-            isDragging: !!monitor.isDragging()
-        })
-    }))
+            isDragging: !!monitor.isDragging(),
+        }),
+    }));
 
     return (
         <div ref={drag} className="task">
@@ -19,6 +18,6 @@ const Task = ({task}) => {
             <div className="user">{task.user}</div>
         </div>
     );
-}
+};
 
 export default Task;

@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 const useTaskStatuses = (tasks) => {
     const [todo, setTodo] = useState([]);
@@ -8,8 +8,10 @@ const useTaskStatuses = (tasks) => {
 
     useEffect(() => {
         const fTodo = tasks?.filter((task) => task.status === "todo") || [];
-        const fReadyForDev = tasks?.filter((task) => task.status === "readyForDev") || [];
-        const fInProgress = tasks?.filter((task) => task.status === "inProgress") || [];
+        const fReadyForDev =
+            tasks?.filter((task) => task.status === "readyForDev") || [];
+        const fInProgress =
+            tasks?.filter((task) => task.status === "inProgress") || [];
         const fDone = tasks?.filter((task) => task.status === "done") || [];
 
         setTodo(fTodo);

@@ -6,7 +6,9 @@ const getInitialValue = (key, initialValue) => {
 };
 
 const useLocalStorage = (key, initialValue) => {
-    const [value, updateValue] = useState(() => getInitialValue(key, initialValue));
+    const [value, updateValue] = useState(() =>
+        getInitialValue(key, initialValue),
+    );
 
     useEffect(() => {
         localStorage.setItem(key, JSON.stringify(value));

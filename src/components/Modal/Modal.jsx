@@ -1,24 +1,32 @@
-import React from 'react';
-import "./Modal.css"
+import React from "react";
+import "./Modal.css";
 
-const Modal = ({active, setActive, children, handleCloseModal, title}) => {
-
+const Modal = ({ active, setActive, children, handleCloseModal, title }) => {
     const stopPropagation = (event) => {
-        event.stopPropagation()
-    }
+        event.stopPropagation();
+    };
 
     return (
-        <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
-            <div className={active ? "modal__content active" : "modal__content"} onClick={stopPropagation}>
+        <div
+            className={active ? "modal active" : "modal"}
+            onClick={() => setActive(false)}
+        >
+            <div
+                className={active ? "modal__content active" : "modal__content"}
+                onClick={stopPropagation}
+            >
                 <div className="form-title">
-                    <h1 className="title-modal" style={{color:"black"}}>{title}</h1>
-                    <button className="close-button" onClick={handleCloseModal}>&#10006;</button>
+                    <h1 className="title-modal" style={{ color: "black" }}>
+                        {title}
+                    </h1>
+                    <button className="close-button" onClick={handleCloseModal}>
+                        &#10006;
+                    </button>
                 </div>
                 {children}
             </div>
         </div>
     );
 };
-
 
 export default Modal;

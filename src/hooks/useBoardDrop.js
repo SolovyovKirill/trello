@@ -1,17 +1,17 @@
-import {useDrop} from "react-dnd";
+import { useDrop } from "react-dnd";
 
 const useBoardDrop = (status, setTasks) => {
     const [{ isOver }, drop] = useDrop(() => ({
         accept: "task",
         drop: (item) => addItemToBoard(item.id),
         collect: (monitor) => ({
-            isOver: !!monitor.isOver()
-        })
+            isOver: !!monitor.isOver(),
+        }),
     }));
 
     const addItemToBoard = (id) => {
-        setTasks(prevTasks => {
-            const updatedTasks = prevTasks.map(task => {
+        setTasks((prevTasks) => {
+            const updatedTasks = prevTasks.map((task) => {
                 if (task.id === id) {
                     return { ...task, status: status };
                 }
@@ -26,7 +26,7 @@ const useBoardDrop = (status, setTasks) => {
 
     return {
         dropRef: drop,
-        isOver
+        isOver,
     };
 };
 

@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const useTaskForm = (tasks, setTasks, handleCloseModal) => {
@@ -27,7 +27,9 @@ const useTaskForm = (tasks, setTasks, handleCloseModal) => {
                 status: "todo",
             };
 
-            const updatedTasks = Array.isArray(tasks) ? [...tasks, newTask] : [newTask];
+            const updatedTasks = Array.isArray(tasks)
+                ? [...tasks, newTask]
+                : [newTask];
             setTasks(updatedTasks);
             localStorage.setItem("tasks", JSON.stringify(updatedTasks));
 

@@ -1,8 +1,7 @@
-import React from 'react';
-import './Header.css';
+import React from "react";
+import "./Header.css";
 
 const Header = ({ handleToggleModal }) => {
-
     return (
         <header className="header">
             <div className="header-title">TRELLO</div>

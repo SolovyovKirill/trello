@@ -1,6 +1,6 @@
-import React from 'react';
-import Task from "../TaskBox/Task";
-import './Board.css';
+import React from "react";
+import Task from "../Task/Task";
+import "./Board.css";
 import useBoardDrop from "../../hooks/useBoardDrop";
 
 const Board = ({ status, setTasks, todo, readyForDev, inProgress, done }) => {
@@ -26,12 +26,9 @@ const Board = ({ status, setTasks, todo, readyForDev, inProgress, done }) => {
 
     return (
         <div ref={dropRef} className="board">
-            <div className="board-title">
-                {text}
-            </div>
-            {tasksToMap.length > 0 && tasksToMap.map(task =>
-                <Task key={task.id} task={task} />
-            )}
+            <div className="board-title">{text}</div>
+            {tasksToMap.length > 0 &&
+                tasksToMap.map((task) => <Task key={task.id} task={task} />)}
         </div>
     );
 };
