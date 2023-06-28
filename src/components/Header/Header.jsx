@@ -4,7 +4,7 @@ import "./Header.css";
 const Header = ({ handleToggleModal }) => {
     return (
         <header className="header">
-            <div className="header-title">TRELLO</div>
+            <h2 className="header-title">TRELLO</h2>
             <button className="create-task-button" onClick={handleToggleModal}>
                 Create New Task
             </button>

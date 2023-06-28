@@ -1,21 +1,15 @@
 import React from "react";
 import "./Task.css";
-import { useDrag } from "react-dnd";
+import useTaskDrag from "../../hooks/useTaskDrag";
 
 const Task = ({ task }) => {
-    const [{ isDragging }, drag] = useDrag(() => ({
-        type: "task",
-        item: { id: task.id },
-        collect: (monitor) => ({
-            isDragging: !!monitor.isDragging(),
-        }),
-    }));
+    const { isDragging, drag } = useTaskDrag(task);
 
     return (
         <div ref={drag} className="task">
-            <div className="title">{task.title}</div>
-            <div className="description">{task.description}</div>
-            <div className="user">{task.user}</div>
+            <h3 className="title">{task.title}</h3>
+            <h4 className="description">{task.description}</h4>
+            <h5 className="user">{task.user}</h5>
         </div>
     );
 };

@@ -4,23 +4,21 @@
     display: flex;
     flex-direction: column;
     color: rgba(255, 255, 255, 1);
-    margin-top: 53px;
+    margin-top: 54px;
 }
 
 .title {
-    font-size: 18px;
     color: rgba(255, 255, 255, 1);
     padding: 20px 14px;
-    line-height: 23px;
+    line-height: 22px;
 }
 
 .description {
     padding: 20px 14px;
-    line-height: 23px;
+    line-height: 22px;
 }
 
 .user {
-    font-size: 14px;
     padding: 20px 14px;
-    line-height: 23px;
+    line-height: 22px;
 }

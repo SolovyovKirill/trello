@@ -1,16 +1,18 @@
 import React from "react";
 import "./Modal.css";
+import close from "../../icons/close.svg";
 
 const Modal = ({ active, setActive, children, handleCloseModal, title }) => {
     const stopPropagation = (event) => {
         event.stopPropagation();
     };
 
+    const closeModal = () => {
+        setActive(false);
+    };
+
     return (
-        <div
-            className={active ? "modal active" : "modal"}
-            onClick={() => setActive(false)}
-        >
+        <div className={active ? "modal active" : "modal"} onClick={closeModal}>
             <div
                 className={active ? "modal__content active" : "modal__content"}
                 onClick={stopPropagation}
@@ -20,7 +22,7 @@ const Modal = ({ active, setActive, children, handleCloseModal, title }) => {
                         {title}
                     </h1>
                     <button className="close-button" onClick={handleCloseModal}>
-                        &#10006;
+                        <img src={close} alt="Close" />
                     </button>
                 </div>
                 {children}

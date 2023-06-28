@@ -1,7 +1,69 @@
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    line-height: 1.5;
+    background-repeat: no-repeat;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
     font-family: "Noto Sans SC", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+}
+
+p,
+button {
+    font-family: "Noto Sans SC", sans-serif;
+}
+
+button {
+    border: 0;
+    background: none;
+    cursor: pointer;
+    outline: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+input {
+    border: none;
 }
 
 .app {

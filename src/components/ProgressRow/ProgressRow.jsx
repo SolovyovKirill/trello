@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ProgressRow.css";
 import Board from "../Board/Board";
-import useTaskStatuses from "../../hooks/useTaskStatuses";
+import getFilteredTasks from "../../utils/utils";
 
 const ProgressRow = ({ tasks, setTasks }) => {
-    const { todo, readyForDev, inProgress, done } = useTaskStatuses(tasks);
+    const [todo, setTodo] = useState([]);
+    const [readyForDev, setReadyForDev] = useState([]);
+    const [inProgress, setInProgress] = useState([]);
+    const [done, setDone] = useState([]);
+
+    useEffect(() => {
+        setTodo(getFilteredTasks("todo", tasks));
+        setReadyForDev(getFilteredTasks("readyForDev", tasks));
+        setInProgress(getFilteredTasks("inProgress", tasks));
+        setDone(getFilteredTasks("done", tasks));
+    }, [tasks]);
 
     const statuses = ["todo", "readyForDev", "inProgress", "done"];
 
