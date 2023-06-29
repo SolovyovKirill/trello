@@ -1,7 +1,5 @@
 .modal {
-    /*height: 100vh;*/
-    /*width: 100vh;*/
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     position: fixed;
     top: 0;
     left: 0;
@@ -13,6 +11,7 @@
     opacity: 0;
     pointer-events: none;
     transition: 0.5s;
+    z-index: 1;
 }
 
 .modal.active {
@@ -23,7 +22,8 @@
 .modal__content {
     padding: 20px;
     border-radius: 12px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(0, 0, 0, 1);
     transform: scale(0.5);
     transition: 0.4s all;
     width: 50vw;
@@ -31,4 +31,24 @@
 
 .modal__content.active {
     transform: scale(1);
+}
+
+.form-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-modal {
+    font-weight: 800;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 1);
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: rgba(0, 0, 0, 1);
+    font-size: 20px;
+    cursor: pointer;
 }

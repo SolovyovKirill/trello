@@ -1,0 +1,36 @@
+.header {
+    background: rgba(43, 54, 135, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 32px;
+    color: rgba(255, 255, 255, 1);
+    position: absolute;
+    top: 80px;
+    left: 96px;
+    right: 96px;
+}
+
+.header-title {
+    font-weight: 700;
+}
+
+.create-task-button {
+    background: rgba(234, 232, 232, 1);
+    border: none;
+    padding: 8px 32px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+@media (max-width: 500px) {
+    .header {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .create-task-button {
+        margin-top: 12px;
+    }
+}

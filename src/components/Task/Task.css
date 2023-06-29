@@ -1,0 +1,24 @@
+.task {
+    width: 250px;
+    background-color: rgba(98, 149, 241, 0.8);
+    display: flex;
+    flex-direction: column;
+    color: rgba(255, 255, 255, 1);
+    margin-top: 54px;
+}
+
+.title {
+    color: rgba(255, 255, 255, 1);
+    padding: 20px 14px;
+    line-height: 22px;
+}
+
+.description {
+    padding: 20px 14px;
+    line-height: 22px;
+}
+
+.user {
+    padding: 20px 14px;
+    line-height: 22px;
+}

@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+}
+
+.boards-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 140px;
+    gap: 83px;
+    align-items: start;
+    position: absolute;
+}
+
+.boards-row > .board {
+    width: 250px;
+}
+
+@media screen and (max-width: 600px) {
+    .boards-row .board {
+        flex-direction: column;
+    }
+}
